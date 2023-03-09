@@ -6,7 +6,6 @@ import com.example.CricketGameWithSpring.Service.PlayerInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,14 +14,14 @@ public class PlayerInfoServiceImp implements PlayerInfoService {
     @Autowired
     PlayerInfoDao playerInfoDao;
     @Override
-    public List<PlayerInfo> getPlayerInfoByPlayerName(String playerRole) {return playerInfoDao.findByRole(playerRole);}
+    public List<PlayerInfo> getPlayerInfoByPlayerRole(String playerRole) {return playerInfoDao.findByRole(playerRole);}
 
     @Override
     public void checkPlayersInfoPresentOrNot() {
         long tableExists = playerInfoDao.count();
         if (tableExists==0) {
 
-            System.out.println("hii");
+
             Random random = new Random();
 
             for (int i = 1; i <= 35; i++) {
@@ -32,8 +31,12 @@ public class PlayerInfoServiceImp implements PlayerInfoService {
                 String role = roles[random.nextInt(roles.length)]; // generate random role from list
                 PlayerInfo playerInfo = new PlayerInfo(id, name, role);
                 playerInfoDao.save(playerInfo);
+
+
             }
         }
+
+
 
     }
 }

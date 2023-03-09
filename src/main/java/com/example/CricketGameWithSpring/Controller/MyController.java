@@ -73,7 +73,7 @@ public class  MyController
     List<PlayerInfo> getPlayerInfoByPlayerRole(@PathVariable String playerRole)
     {
 
-        return playerInfoService.getPlayerInfoByPlayerName(playerRole);
+        return playerInfoService.getPlayerInfoByPlayerRole(playerRole);
     }
     @GetMapping("/matchDetail/teamDetail/{teamName}")
     List<TeamDetail> getTeamDetailByTeamName(@PathVariable String teamName)
